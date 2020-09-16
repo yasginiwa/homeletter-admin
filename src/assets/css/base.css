@@ -13,3 +13,16 @@ html, body, #app {
 .el-card {
     margin-top: 20px;
 }
+
+.el-table th, .el-table td {
+    text-align: center !important;
+}
+
+.el-table td:nth-last-child(1), .el-table th:nth-last-child(1)  {
+    text-align: left !important;
+  }
+
+.el-pagination {
+    margin-top: 20px !important;
+}
+

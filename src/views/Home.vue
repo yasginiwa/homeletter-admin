@@ -4,7 +4,7 @@
     <el-header>
       <div>
         <img src="../assets/logo.png" alt />
-        <span>一封家书征文后台管理</span>
+        <span>一封家书征文后台管理系统</span>
       </div>
       <el-button type="info" @click="handleLogout">退出</el-button>
     </el-header>
@@ -12,7 +12,7 @@
       <!-- 侧边栏 -->
       <el-aside :width= "isCollapse ? '64px' : '200px'">
         <div class="toggle-button" @click="toggleCollapse">|||</div>
-        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#409eff" unique-opened :collapse="isCollapse" :collapse-transition="false" default-active="1">
+        <el-menu background-color="#545c64" text-color="#fff" active-text-color="#efba14" unique-opened :collapse="isCollapse" :collapse-transition="false" default-active="1">
             <!-- 一级菜单 -->
             <el-menu-item index="1" >
               <i class="el-icon-menu"></i>
@@ -72,6 +72,7 @@ export default {
         font-size: 20px;
         color: #fff;
         margin-left: 10px;
+        letter-spacing: 2px;
       }
     }
   }
