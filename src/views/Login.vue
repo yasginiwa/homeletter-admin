@@ -34,6 +34,7 @@
           <el-button type="primary" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
+      <div class="copyright">武汉市玫隆皇冠食品有限公司 信息技术部</div>
     </div>
   </div>
 </template>
@@ -96,6 +97,7 @@ export default {
 
 <style lang="less" scoped>
 .login_container {
+  position: relative;
   background-color: #2b4b6b;
   width: 100%;
   height: 100%;
@@ -104,7 +106,7 @@ export default {
   align-items: center;
   .login_box {
     width: 450px;
-    height: 370px;
+    height: 300px;
     background-color: #fff;
     border-radius: 5px;
     display: flex;
@@ -112,7 +114,6 @@ export default {
     justify-content: flex-start;
     align-items: center;
     .avatar_box {
-      height: 130px;
       width: 130px;
       border: 1px solid #eee;
       border-radius: 50%;
@@ -131,26 +132,30 @@ export default {
       width: 100%;
       height: 100%;
       padding: 0 20px;
-      margin-top: 20px;
       box-sizing: border-box;
       transform: translateY(-30%);
       display: flex;
       flex-direction: column;
       .login_title {
         text-align: center;
-        padding: 10px 0;
         color: #333;
+        padding: 0 0 10px 0;
+        -webkit-padding: 0 0 10px 0;
         letter-spacing: 1px;
         font-size: 16px;
       }
-      .el-form-item {
-        margin-top: 20px;
-      }
-
       .login_btns {
         align-self: flex-end;
       }
     }
+  }
+  
+  .copyright {
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    bottom: 30px;
+    letter-spacing: 2px;
   }
 }
 </style>

@@ -9,7 +9,7 @@
         </el-breadcrumb>
       </el-col>
       <el-col :span="3">
-        <el-button type="warning" size="small" @click="exportExcel">全部导出</el-button>
+        <el-button type="warning" size="small" @click="exportExcel">导出Excel</el-button>
       </el-col>
     </el-row>
 
@@ -29,7 +29,7 @@
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
         :current-page="queryInfo.pagenum"
-        :page-sizes="[1, 2, 3]"
+        :page-sizes="[2, 3, 5]"
         :page-size="queryInfo.pagesize"
         layout="total, sizes, prev, pager, next, jumper"
         :total="this.total"
@@ -124,7 +124,7 @@ export default {
 
 
       console.log(this.allLetterList)
-      qee(titleList, this.allLetterList, "一封家书投稿.xlsx");
+      qee(titleList, this.allLetterList, "一封家书投稿.xls");
     },
   },
 };
