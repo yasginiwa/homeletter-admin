@@ -5,7 +5,7 @@
       <el-col :span="21">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>信件管理</el-breadcrumb-item>
+          <el-breadcrumb-item>信件统计</el-breadcrumb-item>
         </el-breadcrumb>
       </el-col>
       <el-col :span="3">
@@ -16,7 +16,7 @@
     <!-- 卡面区域 -->
     <el-card>
       <!-- 信件表格区域 -->
-      <el-table :data="letterList" border stripe>
+      <el-table :data="letterList" v-loading="loading" border stripe>
         <el-table-column width="80" type="index" label="#"></el-table-column>
         <el-table-column prop="name" label="姓名" width="120"></el-table-column>
         <el-table-column prop="gender" label="性别" width="120"></el-table-column>
@@ -45,28 +45,30 @@ export default {
   data() {
     return {
       letterList: [],
-      allLetterList: [],
       queryInfo: {
         pagenum: 1,
         pagesize: 3,
       },
       total: 0,
+      loading: false
     };
   },
 
   created() {
     this.getLetters();
-
-
-    this.getAllLetters();
   },
 
   methods: {
     //  获取所有信件信息
     async getAllLetters() {
-      const { data: res } = await this.$http.get("getallletters");
+      const { data: result } = await this.$http.get("getallletters");
+      this.loading = true
 
-      this.allLetterList = res.data.result;
+      return new Promise((res, reject) => {
+        res(result.data.result)
+      })
+
+      
     },
 
     //  获取信件信息
@@ -98,7 +100,7 @@ export default {
     },
 
     //  导出
-    exportExcel() {
+    async exportExcel() {
       let titleList = [
         {
           title: "序号",
@@ -122,9 +124,11 @@ export default {
         },
       ];
 
+      const allLetterList = await this.getAllLetters()
 
-      console.log(this.allLetterList)
-      qee(titleList, this.allLetterList, "一封家书投稿.xls");
+      this.loading = false
+
+      qee(titleList, allLetterList, "一封家书投稿.xls");
     },
   },
 };
