@@ -39,7 +39,7 @@ export default {
 
   methods: {
     handleLogout() {
-      this.$router.push("/login");
+      this.$router.push("/login")
     },
 
     toggleCollapse() {
